@@ -21,7 +21,7 @@ import { HousingService } from '../housing.service';
       </app-housing-location>
    </section>
   `,
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.scss']
 })
 
 

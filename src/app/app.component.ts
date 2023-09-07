@@ -17,7 +17,7 @@ import { HousingService } from './housing.service';
       <router-outlet></router-outlet>
     </section>
   </main>`,
-  styleUrls: ['./app.component.css'],
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
   title = 'default';
