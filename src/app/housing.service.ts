@@ -1,26 +1,26 @@
 import { Injectable } from '@angular/core';
 import { HousingLocation } from './housing-location';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HousingService {
-  url = "https://json-server-one-iota.vercel.app/locations"  
+  url = "https://json-server-one-iota.vercel.app/locations";
 
+  constructor(private http: HttpClient) { }
 
-  constructor() { }
-
-  async getAllHousingLocations() : Promise<HousingLocation[]> {
-    const data = await fetch(this.url)
-    return await data.json() ?? [] 
+  getAllHousingLocations(): Observable<HousingLocation[]> {
+    return this.http.get<HousingLocation[]>(this.url);
   }
 
   async getHousingLocationById(id: number): Promise<HousingLocation | undefined> {
-    const data = await fetch(`${this.url}/${id}`)
-    return await data.json() ?? {}
+    const data = await this.http.get<HousingLocation>(`${this.url}/${id}`).toPromise();
+    return data ?? undefined;
   }
 
   submitApplication(firstName: string, lastName: string, email: string) {
-    console.log(firstName, lastName, email)
+    console.log(firstName, lastName, email);
   }
 }
