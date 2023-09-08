@@ -9,10 +9,11 @@ const routeConfig: Routes = [
         title: "Home page"
     },
     {
-        path: "details/:id",
-        component: DetailsComponent,
-        title: "Details page"       
-    } 
+    path: "details/:id",
+    loadChildren: () =>
+      import("./details/details.module").then((m) => m.DetailsModule),
+    title: "Details page"
+  }
 ]
 
 export default routeConfig
