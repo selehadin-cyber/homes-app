@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "homes-app-6a762": {
+      "hosting": {
+        "angular.io-example": [
+          "homes-app-6a762"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "homes-app-6a762"
+  }
+}

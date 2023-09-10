@@ -1,4 +1,5 @@
 import { Component, inject } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore'; 
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { HousingService } from '../housing.service';
@@ -54,7 +55,7 @@ export class DetailsComponent {
     lastName: new FormControl(""),
     email:  new FormControl("")
   })
-  constructor() {
+  constructor(private firestore: AngularFirestore) {
     const housingLocationId = Number(this.route.snapshot.params["id"])
     this.housingService.getHousingLocationById(housingLocationId).then((housingLocation) => {
       this.housingLocation = housingLocation
@@ -62,11 +63,27 @@ export class DetailsComponent {
   }
 
   submitApplication() {
-    this.housingService.submitApplication(
-      this.applyForm.value.firstName ?? "",
-      this.applyForm.value.lastName ?? "",
-      this.applyForm.value.email ?? "",
+    // Create a reference to the "forms" collection in Firestore
+    const formsCollection = this.firestore.collection<any>('forms');
 
-    )
+    // Prepare the data to be submitted to Firestore
+    const formData = {
+      firstName: this.applyForm.value.firstName ?? '',
+      lastName: this.applyForm.value.lastName ?? '',
+      email: this.applyForm.value.email ?? '',
+    };
+
+    // Add the data to the "forms" collection
+    formsCollection.add(formData)
+      .then(() => {
+        // Data has been successfully added to Firestore
+        // You can add any further logic here if needed
+        console.log('Application submitted successfully');
+      })
+      .catch((error) => {
+        // Handle errors if data submission fails
+        console.error('Error submitting application:', error);
+      });
+
   }
 }
