@@ -7,6 +7,7 @@ import {
 import * as auth from 'firebase/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
+import { Observable, catchError, filter, map, of, switchMap } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
@@ -98,6 +99,7 @@ export class AuthService {
       displayName: user.displayName,
       photoURL: user.photoURL,
       emailVerified: user.emailVerified,
+      role: "Renter"
     };
     return userRef.set(userData, {
       merge: true,
@@ -109,5 +111,21 @@ export class AuthService {
       localStorage.removeItem('user');
       this.router.navigate(['sign-in']);
     });
+  }
+  // Get user role
+  // Get user role from Firestore
+  getUserRole(): Observable<string> {
+  return this.afAuth.authState.pipe(
+      filter((user) => !!user), // Filter out undefined users
+      switchMap((user) =>
+        this.afs
+          .doc<User>(`users/${user?.uid}`)
+          .valueChanges()
+          .pipe(
+            map((userData) => userData?.role || 'Guest'),
+            catchError(() => of('Guest'))
+          )
+      )
+    );
   }
 }

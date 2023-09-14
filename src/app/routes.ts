@@ -1,5 +1,7 @@
 import { Routes } from "@angular/router";
 import { HomeComponent } from "./home/home.component";
+import { DashboardModule } from "./dashboard/dashboard.module";
+import { AuthGuard } from "./shared/guard/auth.guard";
 
 const routeConfig: Routes = [
     {
@@ -17,9 +19,15 @@ const routeConfig: Routes = [
     path: "signin",
     loadChildren: () =>
       import("./signin/signin.module").then((m) => m.SigninModule ),
-    title: "Details page"
+    title: "Sign in"
+    },
+    {
+    path: "dashboard",
+    loadChildren: () =>
+      import("./dashboard/dashboard.module").then((m) => m.DashboardModule ),
+    title: "Dashboard",
+    canActivate: [AuthGuard]
     }
-
 ]
 
 export default routeConfig
