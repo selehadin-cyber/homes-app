@@ -1,22 +1,26 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { provideFirebaseApp, getApp } from '@angular/fire/app';
+import { CommonModule } from '@angular/common';
+
+import { SigninRoutingModule } from './signin-routing.module';
+import { SigninComponent } from './signin.component';
+import { getFirestore } from 'firebase/firestore';
 import { initializeApp } from 'firebase/app';
-import { provideFirestore, getFirestore } from '@angular/fire/firestore';
-import { provideAuth, getAuth } from '@angular/fire/auth';
+import { environment } from 'src/environments/environment';
+import { getAuth } from 'firebase/auth';
+import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
-import { environment } from '../environments/environment';
-import { AppComponent } from './app.component';
-import { FIREBASE_OPTIONS } from '@angular/fire/compat';
+
 
 @NgModule({
-  //declarations: [AppComponent],
+  declarations: [
+    SigninComponent
+  ],
   imports: [
-    BrowserModule,
-    AngularFirestoreModule, // Import Firestore and Auth modules
-    AngularFireAuthModule,
-    AppComponent
+    CommonModule,
+    SigninRoutingModule,
+    AngularFirestoreModule,
+    AngularFireAuthModule
   ],
   providers: [
     {
@@ -34,8 +38,6 @@ import { FIREBASE_OPTIONS } from '@angular/fire/compat';
       },
     },
     { provide: FIREBASE_OPTIONS, useValue: environment.firebase }
-  ],
-  //bootstrap: [AppComponent],
-  
+  ]
 })
-export class AppModule {}
+export class SigninModule { }

@@ -3,12 +3,13 @@ import { HomeComponent } from './home/home.component';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { HousingService } from './housing.service';
+import { AuthService } from './shared/services/auth.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [HomeComponent, RouterModule, HttpClientModule],
-  providers: [HousingService],
+  providers: [HousingService, AuthService],
   template: `<main>
     <header>
       <img src="/assets/logo.svg" alt="logo" class="brand-logo">

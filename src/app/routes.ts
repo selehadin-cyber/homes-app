@@ -1,11 +1,10 @@
 import { Routes } from "@angular/router";
 import { HomeComponent } from "./home/home.component";
-import { DetailsComponent } from "./details/details.component";
 
 const routeConfig: Routes = [
     {
         path: "",
-        component: HomeComponent,
+        component: HomeComponent ,
         title: "Home page"
     },
     {
@@ -13,7 +12,14 @@ const routeConfig: Routes = [
     loadChildren: () =>
       import("./details/details.module").then((m) => m.DetailsModule),
     title: "Details page"
-  }
+    },
+    {
+    path: "signin",
+    loadChildren: () =>
+      import("./signin/signin.module").then((m) => m.SigninModule ),
+    title: "Details page"
+    }
+
 ]
 
 export default routeConfig
