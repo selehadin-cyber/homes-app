@@ -10,14 +10,7 @@ import { AuthService } from './shared/services/auth.service';
   standalone: true,
   imports: [HomeComponent, RouterModule, HttpClientModule],
   providers: [HousingService, AuthService],
-  template: `<main>
-    <header>
-      <img src="/assets/logo.svg" alt="logo" class="brand-logo">
-    </header>
-    <section class="content">
-      <router-outlet></router-outlet>
-    </section>
-  </main>`,
+  templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
