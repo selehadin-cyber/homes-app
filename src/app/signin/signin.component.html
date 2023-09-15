@@ -77,12 +77,18 @@
             required
           />
         </div>
+        <div>
+          <select name="roles" id="roles" (change)="selectRole($event)">
+            <option value="Renter">Renter</option>
+            <option value="Landlord">Landlord</option>
+          </select>
+        </div>
         <div class="formGroup">
           <input
             type="button"
             class="btn btnPrimary"
             value="Sign Up"
-            (click)="authService.SignUp(userEmail.value, userPwd.value)"
+            (click)="signUp(userEmail.value, userPwd.value, role)"
           />
         </div>
         <div class="formGroup">
