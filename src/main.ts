@@ -9,24 +9,26 @@ import { initializeApp } from 'firebase/app';
 import { environment } from './environments/environment';
 import { getAuth } from 'firebase/auth';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 bootstrapApplication(AppComponent, {
   providers: [
     provideRouter(routeConfig),
     {
-      provide: getFirestore,
-      useFactory: () => {
-        const app = initializeApp(environment.firebase);
-        return getFirestore(app);
-      },
+        provide: getFirestore,
+        useFactory: () => {
+            const app = initializeApp(environment.firebase);
+            return getFirestore(app);
+        },
     },
     {
-      provide: getAuth,
-      useFactory: () => {
-        const app = initializeApp(environment.firebase);
-        return getAuth(app);
-      },
+        provide: getAuth,
+        useFactory: () => {
+            const app = initializeApp(environment.firebase);
+            return getAuth(app);
+        },
     },
-    { provide: FIREBASE_OPTIONS, useValue: environment.firebase }
-  ],
+    { provide: FIREBASE_OPTIONS, useValue: environment.firebase },
+    provideAnimations()
+],
 }).catch(err => console.error(err));

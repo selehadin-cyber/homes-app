@@ -1,0 +1,27 @@
+.formGroup mat-form-field + mat-form-field {
+  margin-left: 8px;
+}
+.mat-mdc-form-field {
+    width: 100%;
+}
+.formGroup {
+    display: flex;
+    width: 100%;
+}
+.authBlock {
+    display: flex;
+    flex-direction: column;
+    h3 {
+        align-self: center;
+    }
+}
+.displayTable {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+button {
+    align-self: center;
+    margin: auto;
+}
+

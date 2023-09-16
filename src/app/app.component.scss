@@ -11,6 +11,12 @@ header {
   justify-content: space-between;
   align-items: center;
   padding-inline: 27px;
+  div {
+    cursor: pointer;
+  }
+  img {
+    cursor: pointer;
+  }
 }
 .content {
   padding: var(--content-padding);

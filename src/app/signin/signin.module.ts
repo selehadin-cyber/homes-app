@@ -14,13 +14,14 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
 @NgModule({
   declarations: [
-    SigninComponent
+    
   ],
   imports: [
     CommonModule,
     SigninRoutingModule,
     AngularFirestoreModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    SigninComponent
   ],
   providers: [
     {
