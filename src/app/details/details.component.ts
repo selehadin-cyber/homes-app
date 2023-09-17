@@ -4,12 +4,13 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { HousingService } from '../housing.service';
 import { HousingLocation } from '../housing-location';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {MatButtonModule} from '@angular/material/button';
 
 @Component({
   selector: 'app-details',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, MatButtonModule],
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.scss']
 })
@@ -19,9 +20,9 @@ export class DetailsComponent {
   housingService: HousingService = inject(HousingService)
   housingLocation: HousingLocation | undefined
   applyForm = new FormGroup({
-    firstName: new FormControl(""),
-    lastName: new FormControl(""),
-    email:  new FormControl("")
+    firstName: new FormControl("", [Validators.required, Validators.minLength(3)]),
+    lastName: new FormControl("", [Validators.required, Validators.minLength(3)]),
+    email:  new FormControl("", Validators.email)
   })
   constructor(private firestore: AngularFirestore) {
     const housingLocationId = Number(this.route.snapshot.params["id"])
