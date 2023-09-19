@@ -170,3 +170,39 @@ export const colorSchemeBc = [{
     "value": '#C5CAE9'
   }];
 
+export const colorScheme1 = [{
+    "name": "sold",
+    "value": '#3F51B5'
+  },
+  {
+    "name": "unsold",
+    "value": '#E8EAF6'
+  }];
+
+export const colorScheme2 = [{
+    "name": "sold",
+    "value": '#fd8539'
+  },
+  {
+    "name": "unsold",
+    "value": '#E8EAF6'
+  }];
+
+  export const colorScheme3 = [{
+    "name": "sold",
+    "value": '#2ed480'
+  },
+  {
+    "name": "unsold",
+    "value": '#E8EAF6'
+  }];
+
+export const colorScheme4 = [{
+    "name": "sold",
+    "value": '#fe6d8e'
+  },
+  {
+    "name": "unsold",
+    "value": '#E8EAF6'
+  }];
+

@@ -7,8 +7,7 @@ import { AuthService } from './shared/services/auth.service';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [HomeComponent, RouterModule, HttpClientModule],
+  //imports: [HomeComponent, RouterModule, HttpClientModule],
   providers: [HousingService, AuthService],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],

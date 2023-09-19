@@ -1,15 +1,16 @@
-<p>Your role is {{ userRole }}</p>
+<p class="role">Your role is {{ userRole }}</p>
+<p class="welcome">Welcome {{ userRole }}</p>
 
 <div *ngIf="userRole === 'Landlord'" class="general-container">
-  <!-- Landlord content here -->
-  Welcome Landlord
+  <!-- Landlord content here -->  
+  
   <div class="cards">
     <mat-card>
       <mat-card-content>
         <div class="single-card">
           <div>
-            <p>properties for Sale</p>
-            <p>78</p>
+            <p class="title">properties for Sale</p>
+            <p class="number">78</p>
           </div>
           <ngx-charts-pie-chart [view]="view" [customColors]="colorScheme" [results]="single" [gradient]="gradient"
             [legend]="showLegend" [labels]="showLabels" [doughnut]="isDoughnut" [arcWidth]="arcWidth">
@@ -21,8 +22,8 @@
       <mat-card-content>
         <div class="single-card">
           <div>
-            <p>properties for Rent</p>
-            <p>55</p>
+            <p class="title">properties for Rent</p>
+            <p class="number">55</p>
           </div>
           <ngx-charts-pie-chart [view]="view" [customColors]="colorScheme" [results]="second" [gradient]="gradient"
             [legend]="showLegend" [labels]="showLabels" [doughnut]="isDoughnut" [arcWidth]="arcWidth">
@@ -34,8 +35,8 @@
       <mat-card-content>
         <div class="single-card">
           <div>
-            <p>Total Customer</p>
-            <p>45</p>
+            <p class="title">Total Customer</p>
+            <p class="number">45</p>
           </div>
           <ngx-charts-pie-chart [view]="view" [customColors]="colorScheme" [results]="third" [gradient]="gradient"
             [legend]="showLegend" [labels]="showLabels" [doughnut]="isDoughnut" [arcWidth]="arcWidth">
@@ -47,8 +48,8 @@
       <mat-card-content>
         <div class="single-card">
           <div>
-            <p>Total City</p>
-            <p>80</p>
+            <p class="title">Total City</p>
+            <p class="number">80</p>
           </div>
           <ngx-charts-pie-chart [view]="view" [customColors]="colorScheme" [results]="fourth" [gradient]="gradient"
             [legend]="showLegend" [labels]="showLabels" [doughnut]="isDoughnut" [arcWidth]="arcWidth">
@@ -90,7 +91,7 @@
 <!--renter-->
 <div *ngIf="userRole === 'Renter'" class="general-container">
   <!-- Renter content here -->
-  Welcome Renter
+
   <div class="cards">
     <mat-card>
       <mat-card-content>
@@ -159,7 +160,7 @@
         </mat-card-content>
       </mat-card>
       <mat-card class="referrals-card">
-        <mat-card-header>Property Referrals</mat-card-header>
+        <mat-card-header><p class="header">Property Referrals</p></mat-card-header>
         <mat-card-content>
           <div class="referral" *ngFor="let item of object">
             <div class="referral-item">

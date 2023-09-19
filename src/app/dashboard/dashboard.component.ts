@@ -3,8 +3,10 @@ import { AuthService } from '../shared/services/auth.service';
 import { MatCardModule } from '@angular/material/card'
 import { CommonModule, NgFor } from '@angular/common';
 import { LegendPosition, NgxChartsModule } from '@swimlane/ngx-charts';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
-import { first, fourth, multi, second, third, referrals, colorSchemeBc } from './data'
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { first, fourth, multi, second, third, referrals, colorSchemeBc, colorScheme2, colorScheme3, colorScheme4 } from './data'
+import { Dougnuttype } from '../dougnuttype';
+import { Multidata } from '../multidata';
 
 
 @Component({
@@ -16,10 +18,10 @@ import { first, fourth, multi, second, third, referrals, colorSchemeBc } from '.
 })
 export class DashboardComponent implements OnInit {
   userRole: string = 'Guest'; // Initialize with a default role
-  single: any[] = first
-  second: any[] = second
-  third: any[] = third
-  fourth: any[] = fourth
+  single: Dougnuttype[] = first
+  second: Dougnuttype[] = second
+  third: Dougnuttype[] = third
+  fourth: Dougnuttype[] = fourth
   view: [number, number] = [180, 100];
 
   // options
@@ -40,7 +42,7 @@ export class DashboardComponent implements OnInit {
 
 
   //bar chrt
-  multiData: any[] = multi;
+  multiData: Multidata[] = multi;
   viewBc: [number, number] = [600, 300];
 
   // options

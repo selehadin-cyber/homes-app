@@ -1,41 +1,47 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { provideFirebaseApp, getApp } from '@angular/fire/app';
-import { initializeApp } from 'firebase/app';
-import { provideFirestore, getFirestore } from '@angular/fire/firestore';
-import { provideAuth, getAuth } from '@angular/fire/auth';
-import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
-import { AngularFireAuthModule } from '@angular/fire/compat/auth';
-import { environment } from '../environments/environment';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
+
+
+
+import { AngularFireModule } from '@angular/fire/compat'; // Import AngularFireModule
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore'; // Import AngularFirestoreModule
+import { AngularFireAuthModule } from '@angular/fire/compat/auth'; // Import AngularFireAuthModule
 import { AppComponent } from './app.component';
-import { FIREBASE_OPTIONS } from '@angular/fire/compat';
+import { HomeComponent } from './home/home.component';
+import routeConfig from './routes';
+import { environment } from 'src/environments/environment';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+
 
 @NgModule({
-  //declarations: [AppComponent],
+  declarations: [
+    AppComponent,
+    //HomeComponent
+    // Add your other components here
+  ],
   imports: [
+    HomeComponent,
     BrowserModule,
-    AngularFirestoreModule, // Import Firestore and Auth modules
-    AngularFireAuthModule,
-    AppComponent
+    BrowserAnimationsModule,
+    HttpClientModule,
+    RouterModule.forRoot(routeConfig),
+    AngularFireModule.initializeApp(environment.firebase), // Initialize Firebase here
+    AngularFirestoreModule, // Import Firestore module here
+    AngularFireAuthModule // Import Firebase Auth module here
   ],
-  providers: [
-    {
-      provide: getFirestore,
-      useFactory: () => {
-        const app = initializeApp(environment.firebase);
-        return getFirestore(app);
-      },
-    },
-    {
-      provide: getAuth,
-      useFactory: () => {
-        const app = initializeApp(environment.firebase);
-        return getAuth(app);
-      },
-    },
-    { provide: FIREBASE_OPTIONS, useValue: environment.firebase }
-  ],
-  //bootstrap: [AppComponent],
-  
+  providers: [],
+  bootstrap: [AppComponent] // Bootstrap your main component here
 })
-export class AppModule {}
+export class AppModule { }
+
+// Define a bootstrap method to initialize the application
+export function bootstrap() {
+  const platform = platformBrowserDynamic();
+  platform.bootstrapModule(AppModule);
+}
+
+// Call the bootstrap method to start your application
+bootstrap();
