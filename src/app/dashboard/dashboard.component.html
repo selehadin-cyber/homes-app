@@ -1,7 +1,176 @@
 <p>Your role is {{ userRole }}</p>
 
-<div *ngIf="userRole === 'Renter'">
-  <!-- Renter content here -->
-  Welcome Renter
+<div *ngIf="userRole === 'Landlord'" class="general-container">
+  <!-- Landlord content here -->
+  Welcome Landlord
+  <div class="cards">
+    <mat-card>
+      <mat-card-content>
+        <div class="single-card">
+          <div>
+            <p>properties for Sale</p>
+            <p>78</p>
+          </div>
+          <ngx-charts-pie-chart [view]="view" [customColors]="colorScheme" [results]="single" [gradient]="gradient"
+            [legend]="showLegend" [labels]="showLabels" [doughnut]="isDoughnut" [arcWidth]="arcWidth">
+          </ngx-charts-pie-chart>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    <mat-card>
+      <mat-card-content>
+        <div class="single-card">
+          <div>
+            <p>properties for Rent</p>
+            <p>55</p>
+          </div>
+          <ngx-charts-pie-chart [view]="view" [customColors]="colorScheme" [results]="second" [gradient]="gradient"
+            [legend]="showLegend" [labels]="showLabels" [doughnut]="isDoughnut" [arcWidth]="arcWidth">
+          </ngx-charts-pie-chart>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    <mat-card>
+      <mat-card-content>
+        <div class="single-card">
+          <div>
+            <p>Total Customer</p>
+            <p>45</p>
+          </div>
+          <ngx-charts-pie-chart [view]="view" [customColors]="colorScheme" [results]="third" [gradient]="gradient"
+            [legend]="showLegend" [labels]="showLabels" [doughnut]="isDoughnut" [arcWidth]="arcWidth">
+          </ngx-charts-pie-chart>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    <mat-card>
+      <mat-card-content>
+        <div class="single-card">
+          <div>
+            <p>Total City</p>
+            <p>80</p>
+          </div>
+          <ngx-charts-pie-chart [view]="view" [customColors]="colorScheme" [results]="fourth" [gradient]="gradient"
+            [legend]="showLegend" [labels]="showLabels" [doughnut]="isDoughnut" [arcWidth]="arcWidth">
+          </ngx-charts-pie-chart>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="bar-chart">
+    <div class="cards-container">
+      <mat-card>
+        <mat-card-header>Total Revenue</mat-card-header>
+        <mat-card-content>
+          <ngx-charts-bar-vertical-2d [view]="viewBc" [customColors]="colorschemebc" [results]="multiData"
+            [gradient]="gradientBc" [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegendBc"
+            [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel"
+            [yAxisLabel]="yAxisLabel" [legendTitle]="legendTitle">
+          </ngx-charts-bar-vertical-2d>
+        </mat-card-content>
+      </mat-card>
+      <mat-card class="referrals-card">
+        <mat-card-header>Property Referrals</mat-card-header>
+        <mat-card-content>
+          <div class="referral" *ngFor="let item of object">
+            <div class="referral-item">
+              <p>{{item.name}}</p>
+              <p>{{item.value}}%</p>
+            </div>
+            <mat-progress-bar mode="determinate" color="#7fba7a" [value]="item.value"></mat-progress-bar>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+
 </div>
 
+<!--renter-->
+<div *ngIf="userRole === 'Renter'" class="general-container">
+  <!-- Renter content here -->
+  Welcome Renter
+  <div class="cards">
+    <mat-card>
+      <mat-card-content>
+        <div class="single-card">
+          <div>
+            <p>properties for Sale</p>
+            <p>78</p>
+          </div>
+          <ngx-charts-pie-chart [view]="view" [customColors]="colorScheme" [results]="single" [gradient]="gradient"
+            [legend]="showLegend" [labels]="showLabels" [doughnut]="isDoughnut" [arcWidth]="arcWidth">
+          </ngx-charts-pie-chart>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    <mat-card>
+      <mat-card-content>
+        <div class="single-card">
+          <div>
+            <p>properties for Rent</p>
+            <p>55</p>
+          </div>
+          <ngx-charts-pie-chart [view]="view" [customColors]="colorScheme" [results]="second" [gradient]="gradient"
+            [legend]="showLegend" [labels]="showLabels" [doughnut]="isDoughnut" [arcWidth]="arcWidth">
+          </ngx-charts-pie-chart>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    <mat-card>
+      <mat-card-content>
+        <div class="single-card">
+          <div>
+            <p>Total Customer</p>
+            <p>45</p>
+          </div>
+          <ngx-charts-pie-chart [view]="view" [customColors]="colorScheme" [results]="third" [gradient]="gradient"
+            [legend]="showLegend" [labels]="showLabels" [doughnut]="isDoughnut" [arcWidth]="arcWidth">
+          </ngx-charts-pie-chart>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    <mat-card>
+      <mat-card-content>
+        <div class="single-card">
+          <div>
+            <p>Total City</p>
+            <p>80</p>
+          </div>
+          <ngx-charts-pie-chart [view]="view" [customColors]="colorScheme" [results]="fourth" [gradient]="gradient"
+            [legend]="showLegend" [labels]="showLabels" [doughnut]="isDoughnut" [arcWidth]="arcWidth">
+          </ngx-charts-pie-chart>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="bar-chart">
+    <div class="cards-container">
+      <mat-card>
+        <mat-card-header>Total Revenue</mat-card-header>
+        <mat-card-content>
+          <ngx-charts-bar-vertical-2d [view]="viewBc" [customColors]="colorschemebc" [results]="multiData"
+            [gradient]="gradientBc" [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegendBc"
+            [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel"
+            [yAxisLabel]="yAxisLabel" [legendTitle]="legendTitle">
+          </ngx-charts-bar-vertical-2d>
+        </mat-card-content>
+      </mat-card>
+      <mat-card class="referrals-card">
+        <mat-card-header>Property Referrals</mat-card-header>
+        <mat-card-content>
+          <div class="referral" *ngFor="let item of object">
+            <div class="referral-item">
+              <p>{{item.name}}</p>
+              <p>{{item.value}}%</p>
+            </div>
+            <mat-progress-bar mode="determinate" color="#7fba7a" [value]="item.value"></mat-progress-bar>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+
+</div>

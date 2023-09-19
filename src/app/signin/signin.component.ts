@@ -6,6 +6,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
+import { RouterModule } from '@angular/router';
 import {MatSelectModule} from '@angular/material/select';
 import { Roles } from '../roles';
 import { animate, state, style, transition, trigger } from '@angular/animations';
@@ -26,7 +27,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
     ]),
   ]),
 ],
-  imports: [MatFormFieldModule, MatInputModule,MatButtonModule, MatIconModule, FormsModule, ReactiveFormsModule,MatSelectModule , NgIf],
+  imports: [MatFormFieldModule, MatInputModule,MatButtonModule, MatIconModule, FormsModule, ReactiveFormsModule,MatSelectModule , NgIf, RouterModule],
 })
 export class SigninComponent implements OnInit {
   role: Roles = "Renter"

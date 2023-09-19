@@ -1,5 +1,6 @@
 <div *ngIf="authService.isLoggedIn; else Sign">
-  user is logged in
+  <p>user is logged in</p>
+  <button routerLink="/dashboard">dashboard</button>
 <button (click)="authService.SignOut()">Log out</button>
 </div>
 <ng-template #Sign>

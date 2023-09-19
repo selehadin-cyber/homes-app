@@ -1,0 +1,39 @@
+.single-card {
+    display: flex;
+    align-items: center;
+}
+.cards {
+    display: flex;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.cards-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.mdc-card {
+    border-radius: 15px;
+    margin-inline: 5px;
+    margin-block: 7px;
+}
+.referral {
+    margin-bottom: 21px;
+}
+.referral-item {
+    display: flex;
+    justify-content: space-between;
+}
+.referrals-card {
+    width: 100%;
+    max-width: 600px;
+}
+.mat-mdc-card-header {
+    padding-bottom: 13px;
+}
+.general-container {
+    background-color: #f4f4f4;
+}
