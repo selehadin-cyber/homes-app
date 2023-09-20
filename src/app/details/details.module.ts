@@ -16,26 +16,8 @@ import { FIREBASE_OPTIONS } from '@angular/fire/compat';
     CommonModule,
     DetailsRoutingModule,
     DetailsComponent,
-    AngularFirestoreModule,
-    AngularFireAuthModule
+
   ],
   declarations: [],
-  providers: [
-    {
-      provide: getFirestore,
-      useFactory: () => {
-        const app = initializeApp(environment.firebase);
-        return getFirestore(app);
-      },
-    },
-    {
-      provide: getAuth,
-      useFactory: () => {
-        const app = initializeApp(environment.firebase);
-        return getAuth(app);
-      },
-    },
-    { provide: FIREBASE_OPTIONS, useValue: environment.firebase }
-  ],
 })
 export class DetailsModule {}

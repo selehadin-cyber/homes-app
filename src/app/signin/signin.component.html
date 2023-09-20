@@ -1,7 +1,7 @@
 <div *ngIf="authService.isLoggedIn; else Sign">
   <p>user is logged in</p>
-  <button routerLink="/dashboard">dashboard</button>
-<button (click)="authService.SignOut()">Log out</button>
+  <button mat-raised-button class="dashboard-btn" color="primary" routerLink="/dashboard">dashboard</button>
+  <button mat-raised-button color="primary" (click)="authService.SignOut()">Log out</button>
 </div>
 <ng-template #Sign>
   <section class="displayTable" @myInsertRemoveTrigger *ngIf="toggle">
@@ -11,47 +11,27 @@
         <div class="formGroup">
           <mat-form-field>
             <mat-label>Enter your email</mat-label>
-          <input
-            type="text"
-            class="formControl"
-            matInput 
-            placeholder="pat@example.com" 
-            [formControl]="email" 
-            placeholder="Username"
-            #userName
-            required
-          />
-          <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+            <input type="text" class="formControl" matInput placeholder="pat@example.com" [formControl]="email"
+              placeholder="Username" #userName required />
+            <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
           </mat-form-field>
-          
+
         </div>
         <div class="formGroup">
           <mat-form-field>
             <mat-label>Enter your password</mat-label>
-            <input
-              type="password"
-              class="formControl"
-              matInput 
-              [type]="hide ? 'password' : 'text'" 
-              #userPassword
-              required
-            />
-            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            <input type="password" class="formControl" matInput [type]="hide ? 'password' : 'text'" #userPassword
+              required />
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>
           </mat-form-field>
         </div>
         <!-- Calling SignIn Api from AuthService -->
         <div class="formGroup">
-          <button
-            type="button"
-            mat-raised-button
-            color="primary"
-            class="btn btnPrimary"
-            value="Log in"
-            [disabled]="email.invalid"
-            (click)="authService.SignIn(userName.value, userPassword.value)"
-          >Log in</button>
+          <button type="button" mat-raised-button color="primary" class="btn btnPrimary" value="Log in"
+            [disabled]="email.invalid" (click)="authService.SignIn(userName.value, userPassword.value)">Log in</button>
         </div>
         <div class="formGroup">
           <span class="or"><span class="orInner">Or</span></span>
@@ -61,19 +41,13 @@
         </div>
       </div>
       <div class="redirectToLogin">
-        <span
-          >Don't have an account?<span
-            class="redirect"
-            (click)="toggleFunction()"
-          >
-            Sign Up</span
-          ></span
-        >
+        <span>Don't have an account?<span class="redirect" (click)="toggleFunction()">
+            Sign Up</span></span>
       </div>
     </div>
   </section>
-  
-  
+
+
   <div class="displayTable" @myInsertRemoveTrigger *ngIf="!toggle">
     <div class="displayTableCell">
       <div class="authBlock">
@@ -81,61 +55,42 @@
         <div class="formGroup">
           <mat-form-field>
             <mat-label>Enter your email</mat-label>
-            <input
-              type="email"
-              class="formControl"
-              matInput 
-              placeholder="pat@example.com" 
-              [formControl]="email"
-              #userEmail
-              required
-            />
+            <input type="email" class="formControl" matInput placeholder="pat@example.com" [formControl]="email"
+              #userEmail required />
             <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
           </mat-form-field>
         </div>
         <div class="formGroup">
           <mat-form-field>
             <mat-label>Enter your password</mat-label>
-            <input
-              type="password"
-              class="formControl"
-              matInput [type]="hide ? 'password' : 'text'"
-              #userPwd
-              required
-            />
-            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <input type="password" class="formControl" matInput [type]="hide ? 'password' : 'text'" #userPwd required />
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide">
               <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>
           </mat-form-field>
         </div>
         <div>
           <mat-form-field (change)="selectRole($event)">
-            <mat-label>Select Role</mat-label>  
-            <mat-select [(value)]="role" >
+            <mat-label>Select Role</mat-label>
+            <mat-select [(value)]="role">
               <mat-option value="Renter">Renter</mat-option>
               <mat-option value="Landlord">Landlord</mat-option>
             </mat-select>
           </mat-form-field>
         </div>
         <div class="formGroup">
-          <button
-            type="button"
-            mat-raised-button
-            color="primary"
-            class="btn btnPrimary"
-            value="Sign Up"
-            [disabled]="email.invalid"
-            (click)="signUp(userEmail.value, userPwd.value, role)"
-          >Sign Up</button>
+          <button type="button" mat-raised-button color="primary" class="btn btnPrimary" value="Sign Up"
+            [disabled]="email.invalid" (click)="signUp(userEmail.value, userPwd.value, role)">Sign Up</button>
         </div>
         <div class="formGroup">
           <span class="or"><span class="orInner">Or</span></span>
         </div>
-      <div class="redirectToLogin">
-        <span>
-          Already have an account?
-          <span class="redirect" (click)="toggleFunction()">Log In</span>
-        </span>
+        <div class="redirectToLogin">
+          <span>
+            Already have an account?
+            <span class="redirect" (click)="toggleFunction()">Log In</span>
+          </span>
+        </div>
       </div>
     </div>
-  </div>

@@ -24,8 +24,10 @@ button {
     align-self: center;
     margin: auto;
 }
-.redirect {
+.redirect:hover, .forgotPassword:hover {
     color: blue;
     cursor: pointer;
 }
-
+.dashboard-btn {
+    margin-inline: 20px;
+}

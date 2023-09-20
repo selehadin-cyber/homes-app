@@ -47,7 +47,7 @@ export class DetailsComponent {
       .then(() => {
         // Data has been successfully added to Firestore
         // You can add any further logic here if needed
-        console.log('Application submitted successfully');
+        alert('Application submitted successfully');
       })
       .catch((error) => {
         // Handle errors if data submission fails

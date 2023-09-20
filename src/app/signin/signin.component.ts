@@ -9,7 +9,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { RouterModule } from '@angular/router';
 import {MatSelectModule} from '@angular/material/select';
 import { Roles } from '../roles';
-import { animate, state, style, transition, trigger } from '@angular/animations';
+import { animate, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-signin',
@@ -53,8 +53,8 @@ export class SigninComponent implements OnInit {
   ngOnInit(): void {
     
   }
-  selectRole(event:any) {
-    this.role = event.target.value
+  selectRole(event: Event) {
+    this.role = (event.target as HTMLTextAreaElement).value as Roles
     // Prints selected value
     console.log(this.role);
   }
